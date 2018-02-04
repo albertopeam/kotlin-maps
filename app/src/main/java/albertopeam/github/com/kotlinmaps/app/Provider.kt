@@ -2,6 +2,8 @@ package albertopeam.github.com.kotlinmaps.app
 
 import albertopeam.github.com.kotlinmaps.BuildConfig
 import albertopeam.github.com.kotlinmaps.gateway.api.SearchApi
+import com.google.android.gms.location.FusedLocationProviderClient
+import com.google.android.gms.location.LocationServices
 import com.google.gson.GsonBuilder
 import okhttp3.Cache
 import okhttp3.OkHttpClient
@@ -14,8 +16,9 @@ import retrofit2.converter.gson.GsonConverterFactory
  */
 class Provider(app:App) {
 
-    var apiUrl:String = "https://maps.googleapis.com/maps/api/"
-    var searchApi:SearchApi
+    private val apiUrl:String = "https://maps.googleapis.com/maps/api/"
+    val searchApi:SearchApi
+    val fusedLocationClient:FusedLocationProviderClient
 
     init {
         val cacheSizeBytes = 1024 * 1024 * 2
@@ -31,6 +34,7 @@ class Provider(app:App) {
                 .client(okHttpClient)
                 .build()
         searchApi = retrofit.create(SearchApi::class.java!!)
+        fusedLocationClient = LocationServices.getFusedLocationProviderClient(app)
     }
 
 }

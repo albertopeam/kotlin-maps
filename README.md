@@ -6,6 +6,7 @@ Android example using Kotlin and MVP to search locations and show them over a Go
 * todo:
 
 # Todo:
+* borrar la NoLocationException si no se usa
 * draw pins with the locations, add infowindow with name
 * add screenshots
 * add real location: impl location client

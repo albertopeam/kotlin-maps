@@ -2,7 +2,7 @@ package albertopeam.github.com.kotlinmaps.app.map
 
 import albertopeam.github.com.kotlinmaps.R
 import albertopeam.github.com.kotlinmaps.app.App
-import albertopeam.github.com.kotlinmaps.domain.Place
+import albertopeam.github.com.kotlinmaps.domain.places.Place
 import android.os.Bundle
 import android.support.design.widget.FloatingActionButton
 import android.support.design.widget.Snackbar
