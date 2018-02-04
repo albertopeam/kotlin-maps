@@ -1,12 +1,13 @@
-package albertopeam.github.com.kotlinmaps
+package albertopeam.github.com.kotlinmaps.app.map
 
+import albertopeam.github.com.kotlinmaps.domain.Place
 import com.github.albertopeam.infrastructure.concurrency.UseCaseExecutor
 import com.github.albertopeam.infrastructure.exceptions.HandledException
 
 /**
  * Created by alberto.penas.amor on 4/2/18.
  */
-class MapsPresenter(val mapView:MapView, val useCaseExecutor: UseCaseExecutor, val getNearbyPlaces: GetNearbyPlaces) {
+class MapsPresenter(private val mapView: MapView, private val useCaseExecutor: UseCaseExecutor, private val getNearbyPlaces: GetNearbyPlaces) {
 
     interface MapView {
         fun showPlaces(places:List<Place>)

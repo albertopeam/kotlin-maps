@@ -1,3 +1,5 @@
+package albertopeam.github.com.kotlinmaps.gateway.location
+
 //package albertopeam.github.com.kotlinmaps
 //
 //import android.content.Context

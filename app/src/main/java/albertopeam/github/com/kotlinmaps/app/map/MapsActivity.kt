@@ -1,23 +1,21 @@
-package albertopeam.github.com.kotlinmaps
+package albertopeam.github.com.kotlinmaps.app.map
 
-import android.support.v7.app.AppCompatActivity
+import albertopeam.github.com.kotlinmaps.R
+import albertopeam.github.com.kotlinmaps.app.App
+import albertopeam.github.com.kotlinmaps.domain.Place
 import android.os.Bundle
 import android.support.design.widget.FloatingActionButton
-import android.util.Log
-import android.view.View
-
-import com.google.android.gms.maps.CameraUpdateFactory
+import android.support.design.widget.Snackbar
+import android.support.v7.app.AppCompatActivity
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
-import com.google.android.gms.maps.model.LatLng
-import com.google.android.gms.maps.model.MarkerOptions
 
 class MapsActivity : AppCompatActivity(), OnMapReadyCallback, MapsPresenter.MapView {
 
     private val TAG:String = "MapsActivity"
     private lateinit var mMap: GoogleMap
-    private var presenter:MapsPresenter = MapsAssembler.assemble(this)
+    private var presenter: MapsPresenter = MapsAssembler.assemble(this, App.provider)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,6 +33,6 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, MapsPresenter.MapV
     }
 
     override fun showPlaces(places: List<Place>) {
-
+        Snackbar.make(findViewById(android.R.id.content), "Found ${places.size} places", Snackbar.LENGTH_LONG).show()
     }
 }

@@ -1,4 +1,4 @@
-//package albertopeam.github.com.kotlinmaps;
+package albertopeam.github.com.kotlinmaps.gateway.location;//package albertopeam.github.com.kotlinmaps;
 //
 //import android.os.HandlerThread;
 //import android.os.Looper;
