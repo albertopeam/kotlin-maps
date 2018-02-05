@@ -18,6 +18,8 @@ class GoogleLocationClient(private val fusedLocationClient: FusedLocationProvide
         throw UnsupportedOperationException()
         //TODO: la mierda de servicio no puede ir sincrona, hay que bloquear con un while
         //TODO: el isSucessful siem[re da false
+        //TODO: use CountdownLatch, if no location connect to callbacks and also use the CountdownLatch
+        //https://developer.android.com/training/location/retrieve-current.html
         if (fusedLocationClient.lastLocation.isSuccessful){
             fusedLocationClient.lastLocation.getResult()
             val googleLocation: android.location.Location = fusedLocationClient.lastLocation.result ?: throw NoLocationException()
