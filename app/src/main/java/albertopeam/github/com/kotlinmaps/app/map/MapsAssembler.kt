@@ -10,6 +10,8 @@ import com.github.albertopeam.infrastructure.concurrency.UseCaseExecutorFactory
 import com.github.albertopeam.infrastructure.exceptions.ExceptionController
 import com.github.albertopeam.infrastructure.exceptions.ExceptionControllerFactory
 import com.github.albertopeam.infrastructure.exceptions.ExceptionDelegate
+import com.google.android.gms.location.LocationServices
+import com.google.android.gms.location.SettingsClient
 
 /**
  * Created by alberto.penas.amor on 4/2/18.
@@ -21,7 +23,8 @@ internal class MapsAssembler{
             val delegates:MutableList<ExceptionDelegate> = mutableListOf()
             val exceptionController:ExceptionController = ExceptionControllerFactory.provide(delegates)
             val nearbyPlaces:NearbyPlacesService = NearbyPlacesClient(provider.searchApi)
-            val locationService:LocationService = GoogleLocationClient(provider.fusedLocationClient)
+            val settingsClient:SettingsClient = LocationServices.getSettingsClient(mapView)
+            val locationService:LocationService = GoogleLocationClient(mapView,  provider.fusedLocationClient, settingsClient)
             val getNearbyPlaces = GetNearbyPlaces(exceptionController, mapView, nearbyPlaces, locationService)
             val presenter = MapsPresenter(mapView, useCaseExecutor, getNearbyPlaces)
             delegates.add(LocationPermissionExceptionDelegate(mapView, fun() {

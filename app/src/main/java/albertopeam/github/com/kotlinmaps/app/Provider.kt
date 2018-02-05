@@ -33,7 +33,7 @@ class Provider(app:App) {
                 .baseUrl(apiUrl)
                 .client(okHttpClient)
                 .build()
-        searchApi = retrofit.create(SearchApi::class.java!!)
+        searchApi = retrofit.create(SearchApi::class.java)
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(app)
     }
 
