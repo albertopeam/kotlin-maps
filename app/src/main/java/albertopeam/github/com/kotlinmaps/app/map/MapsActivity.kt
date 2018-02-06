@@ -3,7 +3,10 @@ package albertopeam.github.com.kotlinmaps.app.map
 import albertopeam.github.com.kotlinmaps.R
 import albertopeam.github.com.kotlinmaps.app.App
 import albertopeam.github.com.kotlinmaps.domain.places.Place
+import albertopeam.github.com.kotlinmaps.extensions.snack
 import android.annotation.SuppressLint
+import android.app.Activity
+import android.content.Intent
 import android.os.Bundle
 import android.support.design.widget.FloatingActionButton
 import android.support.design.widget.Snackbar
@@ -28,6 +31,15 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, MapsPresenter.MapV
                 .findFragmentById(R.id.map) as SupportMapFragment
         mapFragment.getMapAsync(this)
 
+        snack("hola")
+
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == MapsAssembler.locationNotEnabledRequestCode && resultCode == Activity.RESULT_OK){
+            presenter.getNearbyPlaces()
+        }
     }
     
     override fun onMapReady(googleMap: GoogleMap) {
