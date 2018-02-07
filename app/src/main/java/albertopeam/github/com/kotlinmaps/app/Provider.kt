@@ -17,6 +17,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 class Provider(app:App) {
 
     private val apiUrl:String = "https://maps.googleapis.com/maps/api/"
+    val token:String = "AIzaSyBXfAzdkMfEKpa8Rsm7VwVSD6JHKa-hku0"
     val searchApi:SearchApi
     val fusedLocationClient:FusedLocationProviderClient
 

@@ -6,11 +6,8 @@ Android example using Kotlin and MVP to search locations and show them over a Go
 * todo:
 
 # Todo:
-* use coordinator to avoid overlap over fab
-* test no location exception(can be tested in simulator) and exception delegate
-* draw pins with the locations, add infowindow with name
+* draw pins with the locations, add infowindow with name(TEST)
 * add screenshots
-* add real location: impl location client
 * check constructors to have private val(s)
 * remove google api key from repo
 * add protected classes for the gateway and make a module or factory to build them

@@ -3,7 +3,9 @@ package albertopeam.github.com.kotlinmaps.app.map
 import albertopeam.github.com.kotlinmaps.app.Provider
 import albertopeam.github.com.kotlinmaps.domain.location.LocationService
 import albertopeam.github.com.kotlinmaps.domain.places.NearbyPlacesService
+import albertopeam.github.com.kotlinmaps.domain.places.SearchByTextPlacesService
 import albertopeam.github.com.kotlinmaps.gateway.api.NearbyPlacesClient
+import albertopeam.github.com.kotlinmaps.gateway.api.SearchByTextPlacesClient
 import albertopeam.github.com.kotlinmaps.gateway.location.GoogleLocationClient
 import com.github.albertopeam.infrastructure.concurrency.UseCaseExecutor
 import com.github.albertopeam.infrastructure.concurrency.UseCaseExecutorFactory
@@ -28,8 +30,10 @@ internal class MapsAssembler{
             val nearbyPlaces:NearbyPlacesService = NearbyPlacesClient(provider.searchApi)
             val settingsClient:SettingsClient = LocationServices.getSettingsClient(mapView)
             val locationService:LocationService = GoogleLocationClient(mapView,  provider.fusedLocationClient, settingsClient)
-            val getNearbyPlaces = GetNearbyPlaces(exceptionController, mapView, nearbyPlaces, locationService)
-            val presenter = MapsPresenter(mapView, useCaseExecutor, getNearbyPlaces)
+            val getNearbyPlaces = NearbyPlacesUseCase(exceptionController, mapView, nearbyPlaces, locationService, provider.token)
+            val searchByTextPlacesClient:SearchByTextPlacesService = SearchByTextPlacesClient(provider.searchApi)
+            val searchByTextPlacesUseCase = SearchByTextPlacesUseCase(exceptionController, mapView, searchByTextPlacesClient, locationService, provider.token)
+            val presenter = MapsPresenter(mapView, useCaseExecutor, getNearbyPlaces, searchByTextPlacesUseCase)
             delegates.add(LocationPermissionExceptionDelegate(mapView, fun() {
                 presenter.getNearbyPlaces()
             }))

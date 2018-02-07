@@ -10,4 +10,6 @@ import retrofit2.http.Query
 interface SearchApi {
     @GET("place/nearbysearch/json")
     fun nearby(@Query("location") location: String, @Query("radius") radius: Int, @Query("key") key: String): Call<NearbyResponse>
+    @GET("place/textsearch/json")
+    fun search(@Query("query") query: String, @Query("location") location: String?, @Query("radius") radius: Int?, @Query("key") key: String): Call<NearbyResponse>
 }
