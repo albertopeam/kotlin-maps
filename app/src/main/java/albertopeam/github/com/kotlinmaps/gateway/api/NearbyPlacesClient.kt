@@ -13,7 +13,8 @@ class NearbyPlacesClient(val searchApi:SearchApi): NearbyPlacesService {
         val response = searchApi.nearby(location, radius, key).execute()
         if (response.isSuccessful){
             val nearbys = response.body()
-            return nearbys!!.results.map { result -> Place(result.id!!, result.name!!, result.place_id!!) }
+            return nearbys!!.results.map { result ->
+                Place(result.id!!, result.name!!, result.place_id!!, result.geometry?.location?.lat!!, result.geometry?.location?.lng!!) }
         }else{
             throw NetworkException()
         }

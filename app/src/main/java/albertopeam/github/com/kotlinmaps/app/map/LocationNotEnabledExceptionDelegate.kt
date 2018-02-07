@@ -6,7 +6,6 @@ import com.github.albertopeam.infrastructure.exceptions.ExceptionDelegate
 import com.github.albertopeam.infrastructure.exceptions.HandledException
 import com.google.android.gms.common.api.ResolvableApiException
 import java.lang.Exception
-import java.util.concurrent.ExecutionException
 
 
 /**
@@ -15,15 +14,14 @@ import java.util.concurrent.ExecutionException
 internal class LocationNotEnabledExceptionDelegate(val activity:Activity, val code:Int):ExceptionDelegate{
 
     override fun canHandle(exception: Exception): Boolean {
-        return exception is ExecutionException && exception.cause is ResolvableApiException
+        return exception is ResolvableApiException
     }
 
     override fun handle(exception: Exception): HandledException {
         class LocationNotEnabledHandledException:HandledException(exception) {
             override fun recover() {
                 try {
-                    val executionException= exception as ExecutionException
-                    val resolvable = executionException.cause as ResolvableApiException
+                    val resolvable = exception as ResolvableApiException
                     resolvable.startResolutionForResult(activity, code)
                 } catch (sendEx: IntentSender.SendIntentException) {
                     // Ignore the error.
