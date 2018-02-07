@@ -6,6 +6,8 @@ Android example using Kotlin and MVP to search locations and show them over a Go
 * todo:
 
 # Todo:
+* check why maps web api returns empty, maybe the data structure
+* check search with empty value
 * draw pins with the locations, add infowindow with name(TEST)
 * add screenshots
 * check constructors to have private val(s)

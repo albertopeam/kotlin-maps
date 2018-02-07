@@ -7,17 +7,22 @@ import com.github.albertopeam.infrastructure.exceptions.HandledException
 /**
  * Created by alberto.penas.amor on 4/2/18.
  */
+internal interface MapView {
+    fun showPlaces(places:List<Place>)
+    fun showEmpty()
+}
+
+interface MapPresenter{
+    fun getNearbyPlaces()
+    fun searchPlaces(query:String?)
+}
+
 internal class MapsPresenter(private val mapView: MapView,
                              private val useCaseExecutor: UseCaseExecutor,
                              private val nearbyPlacesUseCase: NearbyPlacesUseCase,
-                             private val searchByTextPlacesUseCase: SearchByTextPlacesUseCase) {
+                             private val searchByTextPlacesUseCase: SearchByTextPlacesUseCase): MapPresenter {
 
-    interface MapView {
-        fun showPlaces(places:List<Place>)
-        fun showEmpty()
-    }
-
-    fun getNearbyPlaces() {
+    override fun getNearbyPlaces() {
         useCaseExecutor.execute(null, nearbyPlacesUseCase, { response: List<Place> -> Unit
             if (response.isEmpty()){
                 mapView.showEmpty()
@@ -29,7 +34,7 @@ internal class MapsPresenter(private val mapView: MapView,
         })
     }
 
-    fun searchPlaces(query:String?){
+    override fun searchPlaces(query:String?){
         useCaseExecutor.execute(query, searchByTextPlacesUseCase, { response: List<Place> -> Unit
             if (response.isEmpty()){
                 mapView.showEmpty()

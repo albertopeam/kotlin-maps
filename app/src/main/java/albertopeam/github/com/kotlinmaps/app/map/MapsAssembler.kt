@@ -18,10 +18,10 @@ import com.google.android.gms.location.SettingsClient
 /**
  * Created by alberto.penas.amor on 4/2/18.
  */
-internal class MapsAssembler{
+internal class MapAssembler{
     companion object {
         val locationNotEnabledRequestCode:Int = 1666
-        fun assemble(mapView: MapsActivity, provider: Provider): MapsPresenter {
+        fun assemble(mapView: MapsActivity, provider: Provider): MapPresenter {
             val useCaseExecutor:UseCaseExecutor = UseCaseExecutorFactory.provide()
             val delegates:MutableList<ExceptionDelegate> = mutableListOf()
             delegates.add(LocationNotEnabledExceptionDelegate(mapView, locationNotEnabledRequestCode))

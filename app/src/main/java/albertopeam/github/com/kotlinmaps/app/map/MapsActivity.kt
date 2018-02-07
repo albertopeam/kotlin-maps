@@ -20,15 +20,15 @@ import com.google.android.gms.maps.model.LatLngBounds
 import com.google.android.gms.maps.model.MarkerOptions
 
 
-class MapsActivity : AppCompatActivity(), OnMapReadyCallback, MapsPresenter.MapView {
+class MapsActivity : AppCompatActivity(), OnMapReadyCallback, MapView {
 
     private lateinit var map: GoogleMap
-    private lateinit var presenter: MapsPresenter
+    private lateinit var presenter: MapPresenter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_maps)
-        presenter = MapsAssembler.assemble(this, App.provider)
+        presenter = MapAssembler.assemble(this, App.provider)
         val mapFragment = supportFragmentManager
                 .findFragmentById(R.id.map) as SupportMapFragment
         mapFragment.getMapAsync(this)
@@ -36,7 +36,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, MapsPresenter.MapV
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        if (requestCode == MapsAssembler.locationNotEnabledRequestCode && resultCode == Activity.RESULT_OK){
+        if (requestCode == MapAssembler.locationNotEnabledRequestCode && resultCode == Activity.RESULT_OK){
             presenter.getNearbyPlaces()
         }
     }
