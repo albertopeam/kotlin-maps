@@ -14,11 +14,16 @@ internal class MapsPresenter(private val mapView: MapView,
 
     interface MapView {
         fun showPlaces(places:List<Place>)
+        fun showEmpty()
     }
 
     fun getNearbyPlaces() {
         useCaseExecutor.execute(null, nearbyPlacesUseCase, { response: List<Place> -> Unit
-            mapView.showPlaces(response)
+            if (response.isEmpty()){
+                mapView.showEmpty()
+            }else{
+                mapView.showPlaces(response)
+            }
         }, { handledException: HandledException -> Unit
             handledException.recover()
         })
@@ -26,7 +31,11 @@ internal class MapsPresenter(private val mapView: MapView,
 
     fun searchPlaces(query:String?){
         useCaseExecutor.execute(query, searchByTextPlacesUseCase, { response: List<Place> -> Unit
-            mapView.showPlaces(response)
+            if (response.isEmpty()){
+                mapView.showEmpty()
+            }else{
+                mapView.showPlaces(response)
+            }
         }, {handledException: HandledException -> Unit
             handledException.recover()
         })

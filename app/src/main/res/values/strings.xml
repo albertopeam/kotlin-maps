@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">Kotlinmaps</string>
     <string name="title_activity_maps">Nearest places</string>
+    <string name="no_places_found">No found places</string>
     <string name="no_location_available">No location available</string>
     <string name="search">Search</string>
 </resources>

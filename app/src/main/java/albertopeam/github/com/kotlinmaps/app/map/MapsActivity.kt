@@ -3,6 +3,7 @@ package albertopeam.github.com.kotlinmaps.app.map
 import albertopeam.github.com.kotlinmaps.R
 import albertopeam.github.com.kotlinmaps.app.App
 import albertopeam.github.com.kotlinmaps.domain.places.Place
+import albertopeam.github.com.kotlinmaps.extensions.snack
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
@@ -80,5 +81,9 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, MapsPresenter.MapV
             boundsBuilder.include(latLng)
         }
         map.animateCamera(CameraUpdateFactory.newLatLngBounds(boundsBuilder.build(), 16))
+    }
+
+    override fun showEmpty() {
+        snack(resources.getString(R.string.no_places_found))
     }
 }
