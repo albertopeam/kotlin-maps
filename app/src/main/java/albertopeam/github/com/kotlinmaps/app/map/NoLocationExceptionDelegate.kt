@@ -4,12 +4,9 @@ import albertopeam.github.com.kotlinmaps.R
 import albertopeam.github.com.kotlinmaps.domain.location.NoLocationException
 import albertopeam.github.com.kotlinmaps.extensions.snack
 import android.app.Activity
-import android.content.IntentSender
 import com.github.albertopeam.infrastructure.exceptions.ExceptionDelegate
 import com.github.albertopeam.infrastructure.exceptions.HandledException
-import com.google.android.gms.common.api.ResolvableApiException
 import java.lang.Exception
-import java.util.concurrent.ExecutionException
 
 
 /**
