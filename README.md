@@ -2,15 +2,13 @@
 Android example using Kotlin and MVP to search locations and show them over a Google map
 * Under construction
 
-# Screenshots
-* todo:
+# Art
+![Screenshot1](https://github.com/albertopeam/kotlin-maps/blob/develop/art/s1.png)
+![Screenshot2](https://github.com/albertopeam/kotlin-maps/blob/develop/art/s2.png)
 
 # Todo:
 * TESTS
-* update kt lib
 * check search with empty value
-* draw pins with the locations, add infowindow with name(TEST)
-* add screenshots
 * check constructors to have private val(s)
 * remove google api key from repo
 * add protected classes for the gateway and make a module or factory to build them
