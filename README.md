@@ -3,8 +3,8 @@ Android example using Kotlin and MVP to search locations and show them over a Go
 * Under construction
 
 # Art
-![Screenshot1](https://github.com/albertopeam/kotlin-maps/blob/develop/art/s1.png)
-![Screenshot2](https://github.com/albertopeam/kotlin-maps/blob/develop/art/s2.png)
+![Screenshot1](https://github.com/albertopeam/kotlin-maps/blob/master/art/s1.png)
+![Screenshot2](https://github.com/albertopeam/kotlin-maps/blob/master/art/s2.png)
 
 # Todo:
 * TESTS
