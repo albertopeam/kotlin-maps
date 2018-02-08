@@ -7,6 +7,7 @@ import com.github.albertopeam.infrastructure.exceptions.HandledException
 /**
  * Created by alberto.penas.amor on 4/2/18.
  */
+
 internal interface MapView {
     fun showPlaces(places:List<Place>)
     fun showEmpty()

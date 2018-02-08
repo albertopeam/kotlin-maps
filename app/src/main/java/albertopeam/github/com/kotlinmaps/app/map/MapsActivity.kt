@@ -24,6 +24,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, MapView {
 
     private lateinit var map: GoogleMap
     private lateinit var presenter: MapPresenter
+    private var searchView:SearchView? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -45,10 +46,9 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, MapView {
         super.onCreateOptionsMenu(menu)
         menuInflater.inflate(R.menu.map, menu)
         val searchItem = menu!!.findItem(R.id.action_search)
-        val searchView = searchItem.actionView as SearchView
-        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+        searchView = searchItem.actionView as SearchView
+        searchView!!.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String): Boolean {
-                searchView.clearFocus()
                 presenter.searchPlaces(query)
                 return true
             }
